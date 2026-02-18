@@ -46,12 +46,9 @@ public class CustomerRepositoryImpl implements CustomerRepository{
             customerDTO.setCity(rs.getString(7));
             customerDTO.setProvince(rs.getString(8));
             customerDTO.setPostalcode(rs.getString(9));
-
             return customerDTO;
-
-
         });
 
-        return List.of();
+        return customerDTOList;
     }
 }

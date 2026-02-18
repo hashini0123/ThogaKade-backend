@@ -28,6 +28,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> getAll() {
+
+        List<CustomerDTO>
+
+
+
         return List.of();
     }
 }
