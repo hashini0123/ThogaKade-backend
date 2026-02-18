@@ -1,17 +1,19 @@
 package edu.icet.service;
 
+import edu.icet.model.dto.CustomerDTO;
+
 import java.util.List;
 
 public interface CustomerService {
 
-    void addCustomer(Customer customer);
+    void addCustomer(CustomerDTO customer);
 
-    void updateCustomer(Customer customer);
+    void updateCustomer(CustomerDTO customer);
 
     void deleteCustomer(Integer id);
 
-    Customer serachById(Integer id);
+    CustomerDTO serachById(Integer id);
 
-    List<Customer> getAll();
+    List<CustomerDTO> getAll();
 
 }
