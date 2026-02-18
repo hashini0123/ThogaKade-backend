@@ -2,10 +2,18 @@ package edu.icet.repository.Impl;
 
 import edu.icet.model.dto.CustomerDTO;
 import edu.icet.repository.CustomerRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RequiredArgsConstructor
+@Repository
 public class CustomerRepositoryImpl implements CustomerRepository{
+
+    final private JdbcTemplate jdbcTemplate;
 
     @Override
     public boolean addCustomer(CustomerDTO customer) {
@@ -24,6 +32,26 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public List<CustomerDTO> getAll() {
+        String sql = "SELECT * FROM customer";
+
+
+        List<CustomerDTO> customerDTOList = jdbcTemplate.query(sql,(rs,rowNum)->{
+            CustomerDTO customerDTO = new CustomerDTO();
+            customerDTO.setCustID(rs.getString(1));
+            customerDTO.setCustName(rs.getString(2));
+            customerDTO.setCustTitle(rs.getString(3));
+            customerDTO.setDOB(rs.getDate(4).toLocalDate());
+            customerDTO.setSalary(rs.getDouble(5));
+            customerDTO.setCustAddress(rs.getString(6));
+            customerDTO.setCity(rs.getString(7));
+            customerDTO.setProvince(rs.getString(8));
+            customerDTO.setPostalcode(rs.getString(9));
+
+            return customerDTO;
+
+
+        });
+
         return List.of();
     }
 }
