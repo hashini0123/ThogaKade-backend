@@ -1,15 +1,11 @@
-package edu.icet.service.Impl;
+package edu.icet.repository.Impl;
 
 import edu.icet.model.dto.CustomerDTO;
-import edu.icet.service.CustomerService;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import edu.icet.repository.CustomerRepository;
 
 import java.util.List;
 
-@Service
-@AllArgsConstructor
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public boolean addCustomer(CustomerDTO customer) {
