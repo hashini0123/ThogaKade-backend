@@ -21,8 +21,8 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
         return jdbcTemplate.update(sql,
                 customer.getCustID(),
-                customer.getCustName(),
                 customer.getCustTitle(),
+                customer.getCustName(),
                 customer.getDOB(),
                 customer.getSalary(),
                 customer.getCustAddress(),
@@ -34,11 +34,25 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public boolean updateCustomer(CustomerDTO customer) {
-        return false;
+
+        String sql ="UPDATE customer SET (custTitle=?, custName=?, dob=?, salary=?, custAddress=?, city=? province=?, postalcode=? WHERE custID=?)";
+
+        return jdbcTemplate.update(sql,
+                customer.getCustID(),
+                customer.getCustTitle(),
+                customer.getCustName(),
+                customer.getDOB(),
+                customer.getSalary(),
+                customer.getCustAddress(),
+                customer.getCity(),
+                customer.getProvince(),
+                customer.getPostalcode()
+                )>0;
     }
 
     @Override
     public boolean deleteCustomer(String id) {
+
         return false;
     }
 
