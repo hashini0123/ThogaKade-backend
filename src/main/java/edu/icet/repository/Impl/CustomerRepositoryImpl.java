@@ -17,7 +17,19 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public boolean addCustomer(CustomerDTO customer) {
-        return false;
+        String sql = "INSERT INTO customer value(?,?,?,?,?,?,?,?,?)";
+
+        return jdbcTemplate.update(sql,
+                customer.getCustID(),
+                customer.getCustName(),
+                customer.getCustTitle(),
+                customer.getDOB(),
+                customer.getSalary(),
+                customer.getCustAddress(),
+                customer.getCity(),
+                customer.getProvince(),
+                customer.getPostalcode()
+                )>0;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package edu.icet.service.Impl;
 
 import edu.icet.model.dto.CustomerDTO;
+import edu.icet.repository.CustomerRepository;
 import edu.icet.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,28 +12,25 @@ import java.util.List;
 @AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
+    final private CustomerRepository customerRepository;
+
     @Override
     public boolean addCustomer(CustomerDTO customer) {
-        return false;
+        return customerRepository.addCustomer(customer);
     }
 
     @Override
     public boolean updateCustomer(CustomerDTO customer) {
-        return false;
+        return customerRepository.updateCustomer(customer);
     }
 
     @Override
     public boolean deleteCustomer(String id) {
-        return false;
+        return customerRepository.deleteCustomer(id);
     }
 
     @Override
     public List<CustomerDTO> getAll() {
-
-        List<CustomerDTO>
-
-
-
-        return List.of();
+        return customerRepository.getAll();
     }
 }
