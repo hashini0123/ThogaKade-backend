@@ -8,8 +8,7 @@ public interface CustomerRepository {
 
     boolean addCustomer(CustomerDTO customer);
 
-
-
     List<CustomerDTO> getAll();
+
 
 }
