@@ -12,19 +12,19 @@ import java.util.List;
 @CrossOrigin
 public class CustomerController {
 
-     final private CustomerService customerService;
+    final private CustomerService customerService;
 
-     @PostMapping("/add")
-     public boolean addCustomer(@RequestBody CustomerDTO customer){
-         return customerService.addCustomer(customer);
-     }
-
-
+    @PostMapping("/add")
+    public boolean addCustomer(@RequestBody CustomerDTO customer){
+        return customerService.addCustomer(customer);
+    }
 
 
 
-     @GetMapping("/get")
-     public List<CustomerDTO> getAll(){
-         return customerService.getAll();
-     }
+
+
+    @GetMapping("/get")
+    public List<CustomerDTO> getAll(){
+        return customerService.getAll();
+    }
 }

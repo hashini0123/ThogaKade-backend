@@ -5,7 +5,6 @@ import edu.icet.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,20 +28,28 @@ public class CustomerRepositoryImpl implements CustomerRepository{
                 customer.getCity(),
                 customer.getProvince(),
                 customer.getPostalcode()
-                )>0;
+        )>0;
     }
 
     @Override
     public List<CustomerDTO> getAll() {
         String sql = "SELECT * FROM customer";
 
-
         List<CustomerDTO> customerDTOList = jdbcTemplate.query(sql,(rs,rowNum)->{
             CustomerDTO customerDTO = new CustomerDTO();
             customerDTO.setCustID(rs.getString(1));
             customerDTO.setCustName(rs.getString(2));
             customerDTO.setCustTitle(rs.getString(3));
-            customerDTO.setDOB(rs.getDate(4).toLocalDate());
+
+            // 🔴 වෙනස් කළ තැන: Database එකේ DOB එක NULL නම් Crash වෙන එක නැවැත්වීම
+            java.sql.Date sqlDate = rs.getDate(4);
+            if (sqlDate != null) {
+                customerDTO.setDOB(sqlDate.toLocalDate());
+            } else {
+                customerDTO.setDOB(null);
+            }
+            // -------------------------------------------------------------------
+
             customerDTO.setSalary(rs.getDouble(5));
             customerDTO.setCustAddress(rs.getString(6));
             customerDTO.setCity(rs.getString(7));
