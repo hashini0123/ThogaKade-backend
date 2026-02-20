@@ -40,8 +40,6 @@ public class CustomerRepositoryImpl implements CustomerRepository{
             customerDTO.setCustID(rs.getString(1));
             customerDTO.setCustName(rs.getString(2));
             customerDTO.setCustTitle(rs.getString(3));
-
-            // 🔴 වෙනස් කළ තැන: Database එකේ DOB එක NULL නම් Crash වෙන එක නැවැත්වීම
             java.sql.Date sqlDate = rs.getDate(4);
             if (sqlDate != null) {
                 customerDTO.setDOB(sqlDate.toLocalDate());
