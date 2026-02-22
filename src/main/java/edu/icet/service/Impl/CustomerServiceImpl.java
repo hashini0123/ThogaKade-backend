@@ -16,17 +16,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public boolean addCustomer(CustomerDTO customer) {
-
         return customerRepository.addCustomer(customer);
     }
 
+    @Override
+    public boolean updateCustomer(CustomerDTO customer) {
+        return customerRepository.updateCustomer(customer);
+    }
 
-
-//    @Override
-//    public boolean deleteCustomer(String id) {
-//
-//        return customerRepository.deleteCustomer(id);
-//    }
+    @Override
+    public boolean deleteCustomer(Integer id) {
+        return customerRepository.deleteCustomer(id);
+    }
 
     @Override
     public List<CustomerDTO> getAll() {

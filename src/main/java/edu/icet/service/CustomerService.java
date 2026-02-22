@@ -8,7 +8,9 @@ public interface CustomerService {
 
     boolean addCustomer(CustomerDTO customer);
 
+    boolean updateCustomer(CustomerDTO customer);
 
+    boolean deleteCustomer(Integer id);
 
     List<CustomerDTO> getAll();
 
