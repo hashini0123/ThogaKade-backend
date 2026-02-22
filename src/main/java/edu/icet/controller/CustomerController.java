@@ -14,16 +14,22 @@ public class CustomerController {
 
     final private CustomerService customerService;
 
-    @PostMapping("/add")
+    @PostMapping("/add-customer")
     public boolean addCustomer(@RequestBody CustomerDTO customer){
         return customerService.addCustomer(customer);
     }
 
+    @PutMapping("/update-customer")
+    public boolean updateCustomer(@RequestBody CustomerDTO customer){
+        return customerService.updateCustomer(customer);
+    }
 
+    @DeleteMapping("/delete-by-id{id}")
+    public boolean deleteById(Integer id){
+        return customerService.deleteCustomer(id);
+    }
 
-
-
-    @GetMapping("/get")
+    @GetMapping("/get-customer")
     public List<CustomerDTO> getAll(){
         return customerService.getAll();
     }
