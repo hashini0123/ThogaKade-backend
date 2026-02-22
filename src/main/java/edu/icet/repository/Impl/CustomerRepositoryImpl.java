@@ -32,6 +32,30 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
+    public boolean updateCustomer(CustomerDTO customer) {
+        String  sql = "UPDATE customer SET custTitle=?,custName=?, dob=?, salary=?, custAddress=?, city=?, province=?, postalcode=? WHERE CustID=?";
+
+        return jdbcTemplate.update(sql,
+                customer.getCustID(),
+                customer.getCustTitle(),
+                customer.getCustName(),
+                customer.getDOB(),
+                customer.getSalary(),
+                customer.getCustAddress(),
+                customer.getCity(),
+                customer.getProvince(),
+                customer.getPostalcode()
+                )>0;
+    }
+
+    @Override
+    public boolean deleteCustomer(Integer id) {
+        String sql = "DELETE FROM customer WHERE CustID=?";
+
+        return jdbcTemplate.update(sql,id)>0;
+    }
+
+    @Override
     public List<CustomerDTO> getAll() {
         String sql = "SELECT * FROM customer";
 
@@ -46,8 +70,6 @@ public class CustomerRepositoryImpl implements CustomerRepository{
             } else {
                 customerDTO.setDOB(null);
             }
-            // -------------------------------------------------------------------
-
             customerDTO.setSalary(rs.getDouble(5));
             customerDTO.setCustAddress(rs.getString(6));
             customerDTO.setCity(rs.getString(7));
