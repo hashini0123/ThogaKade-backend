@@ -31,16 +31,30 @@ public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
     public boolean updateItem(ItemDTO item) {
-        return false;
+
+        String sql = "UPDATE item SET description=?, packSize=?, unitPrice=?, qtyOnHand=?, itemCode=? ";
+
+        return jdbcTemplate.update(sql,
+                item.getDescription(),
+                item.getPackSize(),
+                item.getUnitPrice(),
+                item.getQtyOnHand(),
+                item.getItemCode()
+                )>0;
     }
 
     @Override
     public boolean deleteItem(Integer id) {
-        return false;
+
+        String sql = "DELETE FROM item WHERE itemCode=? ";
+
+        return jdbcTemplate.update(sql)>0;
     }
 
     @Override
     public List<ItemDTO> getAll() {
-        return List.of();
+
+
+
     }
 }
