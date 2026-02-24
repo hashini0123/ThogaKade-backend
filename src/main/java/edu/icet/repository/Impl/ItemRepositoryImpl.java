@@ -54,7 +54,18 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public List<ItemDTO> getAll() {
 
+        String sql= "SELECT * FROM item";
 
+        List<ItemDTO> itemDTOList = jdbcTemplate.query(sql,(rs,rowNum )-> {
 
+            ItemDTO itemDTO = new ItemDTO();
+
+            itemDTO.setItemCode(rs.getString(1));
+            itemDTO.setDescription(rs.getString(2));
+            itemDTO.setPackSize(rs.getString(3));
+            itemDTO.setPackSize(rs.getDouble(4));
+            itemDTO.setQtyOnHand(rs.getInt(5));
+                });
+        return itemDTOList;
     }
 }
