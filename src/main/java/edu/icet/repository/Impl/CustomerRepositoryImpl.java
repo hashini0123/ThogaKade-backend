@@ -60,7 +60,9 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         String sql = "SELECT * FROM customer";
 
         List<CustomerDTO> customerDTOList = jdbcTemplate.query(sql,(rs,rowNum)->{
+
             CustomerDTO customerDTO = new CustomerDTO();
+
             customerDTO.setCustID(rs.getString(1));
             customerDTO.setCustName(rs.getString(2));
             customerDTO.setCustTitle(rs.getString(3));
