@@ -63,8 +63,9 @@ public class ItemRepositoryImpl implements ItemRepository {
             itemDTO.setItemCode(rs.getString(1));
             itemDTO.setDescription(rs.getString(2));
             itemDTO.setPackSize(rs.getString(3));
-            itemDTO.setPackSize(rs.getDouble(4));
+            itemDTO.setUnitPrice(rs.getDouble(4));
             itemDTO.setQtyOnHand(rs.getInt(5));
+            return itemDTO;
                 });
         return itemDTOList;
     }
