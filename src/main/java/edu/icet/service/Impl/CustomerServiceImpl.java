@@ -31,7 +31,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> getAll() {
-
         return customerRepository.getAll();
     }
 }

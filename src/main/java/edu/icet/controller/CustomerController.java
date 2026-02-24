@@ -9,27 +9,27 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class CustomerController {
 
-    final private CustomerService customerService;
+    private final CustomerService customerService;
 
-    @PostMapping("/add-customer")
+    @PostMapping("/add")
     public boolean addCustomer(@RequestBody CustomerDTO customer){
         return customerService.addCustomer(customer);
     }
 
-    @PutMapping("/update-customer")
+    @PutMapping("/update")
     public boolean updateCustomer(@RequestBody CustomerDTO customer){
         return customerService.updateCustomer(customer);
     }
 
-    @DeleteMapping("/delete-by-id{id}")
-    public boolean deleteById(Integer id){
+    @DeleteMapping("/delete-by-id/{id}")
+    public boolean deleteById(@PathVariable Integer id){
         return customerService.deleteCustomer(id);
     }
 
-    @GetMapping("/get-customer")
+    @GetMapping("/get")
     public List<CustomerDTO> getAll(){
         return customerService.getAll();
     }
