@@ -26,7 +26,7 @@ public class ItemController {
     }
 
     @DeleteMapping("/delete-by-id/{id}")
-    public boolean deleteById(@PathVariable Integer id){
+    public boolean deleteById(@PathVariable String id){
         return itemService.deleteItem(id);
     }
 
