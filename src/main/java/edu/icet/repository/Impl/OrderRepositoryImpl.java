@@ -28,29 +28,38 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public boolean updateOrder(OrderDTO orderDTO) {
-        String sql = "UPDATE orders SET orderDate=?, custID=?, WHERE orderID=?";
+        String sql = "UPDATE orders SET orderDate=?, custID=? WHERE orderID=?";
 
         return jdbcTemplate.update(sql,
                 orderDTO.getOrderDate(),
                 orderDTO.getCustID(),
-                orderDTO.getCustID()
+                orderDTO.getOrderID()
         )>0;
     }
 
     @Override
-    public boolean deleteById(Integer id) {
+    public boolean deleteById(String id) {
         String sql = "DELETE FROM orders WHERE orderID=?";
 
         return jdbcTemplate.update(sql,id)>0;
     }
 
-    @Override
-    public OrderDTO searchById(Integer id) {
-        return null;
-    }
+//    @Override
+//    public OrderDTO searchById(Integer id) {
+//        return null;
+//    }
 
     @Override
     public List<OrderDTO> getAll() {
-        return List.of();
+        String sql = "SELECT * FROM orders";
+
+        List<OrderDTO> orderDTOList = jdbcTemplate.query(sql,(rs, rowNum) -> {
+           OrderDTO orderDTO = new OrderDTO();
+           orderDTO.setOrderID(rs.getString(1));
+           orderDTO.setOrderDate(rs.getDate(2));
+           orderDTO.setCustID(rs.getString(3));
+           return orderDTO;
+        });
+        return orderDTOList;
     }
 }
