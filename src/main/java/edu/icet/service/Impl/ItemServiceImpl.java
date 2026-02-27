@@ -25,7 +25,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public boolean deleteItem(Integer id) {
+    public boolean deleteItem(String id) {
         return itemRepository.deleteItem(id);
     }
 
