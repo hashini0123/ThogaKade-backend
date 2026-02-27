@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/order")
 @CrossOrigin
 @RequiredArgsConstructor
 public class OrderController {
@@ -27,12 +27,12 @@ public class OrderController {
     }
 
     @DeleteMapping("/delete-by-id/{id}")
-    public boolean deleteById(Integer id){
+    public boolean deleteById(@PathVariable Integer id){
         return orderService.deleteById(id);
     }
 
     @GetMapping("/search-by-id/{id}")
-    public OrderDTO searchById(Integer id){
+    public OrderDTO searchById(@PathVariable Integer id){
         return orderService.searchById(id);
     }
 
