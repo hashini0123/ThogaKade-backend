@@ -32,7 +32,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public boolean updateItem(ItemDTO item) {
 
-        String sql = "UPDATE item SET description=?, packSize=?, unitPrice=?, qtyOnHand=?, itemCode=? ";
+        String sql = "UPDATE item SET description=?, packSize=?, unitPrice=?, qtyOnHand=? WHERE itemCode=? ";
 
         return jdbcTemplate.update(sql,
                 item.getDescription(),
@@ -44,11 +44,11 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
-    public boolean deleteItem(Integer id) {
+    public boolean deleteItem(String id) {
 
         String sql = "DELETE FROM item WHERE itemCode=? ";
 
-        return jdbcTemplate.update(sql)>0;
+        return jdbcTemplate.update(sql,id)>0;
     }
 
     @Override
