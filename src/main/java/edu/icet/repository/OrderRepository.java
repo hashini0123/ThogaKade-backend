@@ -9,9 +9,9 @@ public interface OrderRepository {
 
     boolean updateOrder(OrderDTO orderDTO);
 
-    boolean deleteById(Integer id);
+    boolean deleteById(String id);
 
-    OrderDTO searchById(Integer id);
+    //OrderDTO searchById(Integer id);
 
     List<OrderDTO> getAll();
 }
