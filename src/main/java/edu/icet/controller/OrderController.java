@@ -6,6 +6,8 @@ import edu.icet.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping
 @CrossOrigin
@@ -16,17 +18,17 @@ public class OrderController {
 
     @PostMapping("/add")
     public boolean addOrder(@RequestBody OrderDTO orderDTO){
-        orderService.addOrder(orderDTO);
+        return orderService.addOrder(orderDTO);
     }
 
     @PutMapping("/update")
     public boolean updateOrder(@RequestBody OrderDTO orderDTO){
-        orderService.updateOrder(orderDTO);
+        return orderService.updateOrder(orderDTO);
     }
 
     @DeleteMapping("/delete-by-id/{id}")
-    public boolean deleteById(@Integer id){
-        orderService.deleteById(id);
+    public boolean deleteById(Integer id){
+        return orderService.deleteById(id);
     }
 
     @GetMapping("/search-by-id/{id}")
@@ -34,8 +36,8 @@ public class OrderController {
         return orderService.searchById(id);
     }
 
-
-
-
-
+    @GetMapping("/getAll")
+    public List<OrderDTO> getAll(){
+        return orderService.getAll();
+    }
 }
