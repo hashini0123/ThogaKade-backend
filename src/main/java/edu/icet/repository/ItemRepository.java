@@ -10,7 +10,7 @@ public interface ItemRepository {
 
     boolean updateItem(ItemDTO item);
 
-    boolean deleteItem(Integer id);
+    boolean deleteItem(String id);
 
     List<ItemDTO> getAll();
 }
