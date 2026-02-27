@@ -2,6 +2,8 @@ package edu.icet.service;
 
 import edu.icet.model.dto.OrderDTO;
 
+import java.util.List;
+
 public interface OrderService {
     boolean addOrder(OrderDTO orderDTO);
 
@@ -10,4 +12,6 @@ public interface OrderService {
     boolean deleteById(Integer id);
 
     OrderDTO searchById(Integer id);
+
+    List<OrderDTO> getAll();
 }
