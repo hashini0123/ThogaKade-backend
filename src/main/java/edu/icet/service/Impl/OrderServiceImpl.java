@@ -25,14 +25,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public boolean deleteById(Integer id) {
+    public boolean deleteById(String id) {
         return orderRepository.deleteById(id);
     }
 
-    @Override
-    public OrderDTO searchById(Integer id) {
-        return orderRepository.searchById(id);
-    }
+//    @Override
+//    public OrderDTO searchById(Integer id) {
+//        return orderRepository.searchById(id);
+//    }
 
     @Override
     public List<OrderDTO> getAll() {
