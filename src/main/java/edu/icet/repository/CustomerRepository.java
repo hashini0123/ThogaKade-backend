@@ -10,7 +10,7 @@ public interface CustomerRepository {
 
     boolean updateCustomer(CustomerDTO customer);
 
-    boolean deleteCustomer(Integer id);
+    boolean deleteCustomer(String id);
 
     List<CustomerDTO> getAll();
 

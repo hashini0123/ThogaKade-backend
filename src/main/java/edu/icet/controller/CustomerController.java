@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cutomer")
+@RequestMapping("/customer")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200")
 public class CustomerController {
@@ -17,7 +17,7 @@ public class CustomerController {
 
     @PostMapping("/add")
     public boolean addCustomer(@RequestBody CustomerDTO customer){
-        return customerService.addCustomer(customer);
+         return customerService.addCustomer(customer);
     }
 
     @PutMapping("/update")
@@ -26,7 +26,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete-by-id/{id}")
-    public boolean deleteById(@PathVariable Integer id){
+    public boolean deleteById(@PathVariable String id){
         return customerService.deleteCustomer(id);
     }
 
